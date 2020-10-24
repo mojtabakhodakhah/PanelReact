@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+    <p id="p6"></p>
+    <p id="p7"></p>
+    <p id="p8"></p>
+    <p id="p9"></p>
+    <p id="p10"></p>
+    <script>
+        const person = {
+            firstName : "Ali",
+            lastName : "Mohammadi",
+            age : "37",
+            tel : "091243555097",
+            address: "Tehran",
+            fulls : function(){
+                return this.firstName + ' ' + this.lastName + ' ' + this.age + ' ' + this.tel + ' ' + ' ' + this.address
+            }
+        }
+        let persons = {
+            firstName : "Mohammad",
+            lastName : "Alizade",
+            age : 30,
+            set : function(){
+                return age;
+            }
+        }
+        let pers = persons;
+        pers.age = 32;
+        document.getElementById("p6").innerHTML = persons.age;
+
+        document.getElementById("p5").innerHTML = person.fulls();
+        document.getElementById("p1").innerHTML = person.age;
+        let person2 = person;
+        person2.age = 32;
+        document.getElementById("p2").innerHTML = person.age;
+        
+    </script>
+</body>
+</html>

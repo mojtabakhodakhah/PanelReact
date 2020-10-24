@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var txt = "";
+        var numbers = [45, 4, 9, 16, 25];
+        numbers.forEach(myFunction);
+        //روی متغیرها میشه فورایچ زد و داخل اون یه تابع رو تعریف کرد 
+        function myFunction(value, index, array) {
+            txt = txt + value + "<br>";
+        }
+        //indexOf ایندکس المانی که با شرط برابر است را بر میگرداند
+        //lastIndexOf ایندکس آخرین المانی که شرط را پذیرفته بر میگرداند
+        //find در آرایه جستجو می کند و مقداری را که پیدا کرده بر میگرداند
+        //findIndex در آرایه جستجو می کند و شماره ایندکس المانی که شرط را پذیرفته برمیگرداند
+        //some پیدا کردن اولین المان از آرایه که شرط ما را بپذیرد
+        //every اگر تمام المان های یک آرایه یک شرط رو بپذیرند
+        //reduce پیمایش آرایه از چپ به راست و اعمال تغییرات و یا جمع و منهای المان ها با یکدیگر
+        //filter یک آرایه ی جدید از آرایه ی اصلی ما می سازد که اعضای آرایه جدید آنهایی هستند که شرط ما را پذیرفته اند
+    </script>
+</body>
+</html>
