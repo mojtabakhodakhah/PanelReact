@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        *{
+            direction: rtl;
+            text-align:right;
+        }
+        button{
+            text-align: center;
+        }
+        label{
+            display: block;
+            text-align:center;
+        }
+        table{
+            width: 100%;
+            margin: 20px 200px;
+        }
+        table th{
+            border:1px solid #efefef;
+            width: 33%;
+            background-color:#ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <label>نام</label>
+                <input class="form-control" id="name"/>
+            </div>
+            
+            <div class="col-md-3">
+                <label>نام خانوادگی</label>
+                <input class="form-control" id="family"/>
+            </div>
+            
+            <div class="col-md-3">
+                <label>نمره</label>
+                <input class="form-control" id="point"/>
+            </div>
+            
+            <div class="col-md-3">
+                <label>تایید</label>
+                <button onclick="add()" class="form-control btn-info">تایید</button>
+            </div>
+        </div>
+        <div class="row">
+            <table id="dt-table">
+                <tr>
+                    <th onclick="sortname(1)">نام</th>
+                    <th onclick="sortname(2)">نام خانوادگی</th>
+                    <th onclick="sortname(3)">نمره</th>
+                </tr>
+                <tbody id="tablebody"></tbody>
+            </table>
+
+        </div>
+    </div>
+    <script>
+        var studentList = [];
+        
+        const Student = function(firstName,lastName,point){
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.point = point;
+        }
+        
+        var add = () => {
+            document.getElementById('tablebody').innerHTML = "";
+            const student = new Student(
+                document.getElementById('name').value,
+                document.getElementById('family').value,
+                document.getElementById('point').value
+            );
+
+            studentList.push(student);
+
+            document.getElementById('tablebody').innerHTML = studentList.map(lstfunction);
+            
+        }
+
+        function lstfunction(student){
+            var content = `<tr><td>${student.firstName}</td>
+                            <td>${student.lastName}</td>
+                            <td>${student.point}</td></tr>`;
+           return content;
+        }
+
+        const sortname = function(dork){
+            switch (dork){
+                case 1:
+                    studentList.sort(namecompare);
+                break;
+                case 2:
+                    studentList.sort(familycompare);
+                    break;
+                case 3:
+                    studentList.sort(pointcompare);
+                break;
+            }
+            document.getElementById('tablebody').innerHTML = "";
+            document.getElementById('tablebody').innerHTML = studentList.map(lstfunction);
+        }
+
+       
+        Array.prototype.sortBy = function(p) {
+            return this.slice(0).sort(function(a,b) {
+                return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
+            });
+        }
+
+        function namecompare( a, b ) {
+            if ( a.firstName < b.firstName ){
+                return -1;
+            }
+            if ( a.firstName > b.firstName ){
+                return 1;
+            }
+            return 0;
+        }
+
+        function familycompare( a, b ) {
+            if ( a.lastName < b.lastName ){
+                return -1;
+            }
+            if ( a.lastName > b.lastName ){
+                return 1;
+            }
+            return 0;
+        }
+        
+        function pointcompare( a, b ) {
+            if ( a.point < b.point ){
+                return -1;
+            }
+            if ( a.point > b.point ){
+                return 1;
+            }
+            return 0;
+        }
+
+
+    </script>
+</body>
+</html>
